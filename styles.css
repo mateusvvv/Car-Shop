@@ -361,3 +361,91 @@ section .indicators ul li.active {
     color: #000;
     transition: 0.3s;
 }
+
+/* ----------------------------- */
+/* Depoimentos estilo neon        */
+/* Responsivo                     */
+/* ----------------------------- */
+.testimonials {
+    padding: 60px 20px;
+    background-color: #111;
+    text-align: center;
+    position: relative;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #beff1b;
+    text-shadow: 0 0 5px #beff1b, 0 0 10px #beff1b, 0 0 20px #fff;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 5px #beff1b, 0 0 10px #beff1b, 0 0 20px #fff; }
+    to { text-shadow: 0 0 10px #beff1b, 0 0 20px #fff, 0 0 30px #beff1b; }
+}
+
+.testimonial-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #222;
+    border: 1px solid #beff1b;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 300px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 10px #beff1b, 0 0 20px #fff inset;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 25px #beff1b, 0 0 35px #fff inset;
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #beff1b;
+    box-shadow: 0 0 10px #beff1b;
+}
+
+.comment {
+    font-style: italic;
+    margin-bottom: 12px;
+    color: #d9d9d9;
+}
+
+.client-name {
+    font-weight: bold;
+    color: #beff1b;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .testimonial-cards {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 90%;
+    }
+}
+
+
