@@ -1,20 +1,20 @@
+/* Reset e base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
     font-family: "Poppins", sans-serif;
-
 }
 
 body {
     background-color: #000;
     color: #fff;
     font-size: 16px;
-    overflow: hidden;
-
+    overflow-x: hidden;
 }
 
+/* Header */
 header {
     position: fixed;
     width: 90%;
@@ -25,254 +25,339 @@ header {
     align-items: center;
     grid-template-columns: 1fr 600px;
     gap: 10%;
-    z-index: 2;
-
-    & img {
-        width: 250px;
-    }
-
-    & nav {
-        & ul {
-            display: grid;
-            grid-template-columns: repeat(3, 200px);
-        }
-    }
+    z-index: 100;
 }
 
+header img {
+    width: 250px;
+}
+
+header nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+}
+
+/* Seção Carrossel */
 section {
     background-image: radial-gradient(#1218c5, #242323);
     height: 100vh;
     position: relative;
-
-    & .list {
-        width: 70vw;
-        height: 100%;
-        margin: auto;
-        position: relative;
-
-        & .item {
-            position: absolute;
-            inset: 0;
-
-            & .car-img {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 70%;
-
-                & img {
-                    width: 100%;
-                    transform: rotate(-30deg);
-                }
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    background-color: #000;
-                    width: 100%;
-                    height: 100px;
-                    top: 150%;
-                    left: 50px;
-                    border: 50%;
-                    filter: blur(50px);
-                }
-            }
-
-            & .content {
-                position: absolute;
-                right: 100px;
-                width: 70%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: end;
-                gap: 20px;
-            }
-
-
-            & .car-information {
-                font-weight: bold;
-            }
-
-            & h2 {
-                font-size: 8em;
-                line-height: 1em;
-                font-family: "League Gothic", sans-serif;
-            }
-
-            & .description {
-                color: #d9d9d9;
-                font-size: 12px;
-                text-align: right;
-                max-width: 400px;
-            }
-
-            & .information {
-                border-radius: 30px;
-                height: 35px;
-                width: 120px;
-                text-transform: uppercase;
-                border: 2px solid #791fd3;
-                background-color: #beff1b;
-                color: #000;
-                cursor: pointer;
-                font-weight: bold;
-                font-family: "League Gothic", sans-serif;
-            }
-
-        }
-
-        &::before {
-            content: '';
-            position: absolute;
-            height: 200px;
-            width: 100%;
-            top: 50%;
-            border-top: 1px solid #fff;
-        }
-    }
-
-    .arrows {
-        width: 70vw;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -25px);
-        display: flex;
-        justify-content: space-between;
-
-        & button:nth-child(1) {
-            & img {
-                transform: scale(-1);
-            }
-        }
-
-
-        & button {
-            top: 60%;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            margin-top: 4px;
-
-            & img {
-                width: 30px;
-                margin-top: 4px;
-                cursor: pointer;
-            }
-
-            &:hover {
-                background-color: #beff1b;
-            }
-        }
-    }
-
-    .indicators {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: 200px;
-        transform: translateX(-50%);
-        width: 90vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        gap: 15px;
-
-        & .number {
-            font-size: 5em;
-            font-family: "League Gothic", sans-serif;
-        }
-
-        & ul {
-            display: flex;
-            gap: 10px;
-
-            & li {
-                width: 50px;
-                height: 5px;
-                background-color: #beff1b;
-                border-radius: 5px;
-                transition: 0.5s;
-            }
-
-            & .active {
-                background-color: #fff;
-            }
-
-        }
-
-    }
 }
 
-section {
+/* Lista de itens */
+section .list {
+    width: 70vw;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    --calculation: 1;
+}
 
-    & .list {
-        --calculation: 1;
+/* Item individual */
+section .list .item {
+    position: absolute;
+    inset: 0;
+    transform: translateX(calc(100vw * var(--calculation)));
+    transition: 0.5s;
+    opacity: 0;
+}
 
-        & .item {
-            transform: translateX(calc(100vw * var(--calculation)));
-            transition: 0.5s;
-            opacity: 0;
+/* Item ativo */
+section .list .item.active {
+    transform: translateX(0);
+    opacity: 1;
+}
 
-            & .car-img {
-                & img {
-                    transform: rotate(0);
-                    transition: 0.5s;
-                    transition-delay: 0.3s;
-                }
-            }
+/* Imagem do carro */
+section .list .item .car-img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70%;
+}
 
-            & .content {
+section .list .item .car-img img {
+    width: 100%;
+    transform: rotate(-30deg);
+    transition: 0.5s;
+}
 
-                & .car-information,
-                h2,
-                .description,
-                .information {
-                    transform: translateX(calc(200ppx * var(--calculation)));
-                    transition: 0.7s;
-                    transition-delay: 0.3s;
-                    opacity: 0;
-                }
+section .list .item .car-img img:hover {
+    transform: scale(1.05) rotate(-30deg);
+    filter: brightness(1.2);
+    transition: transform 0.5s, filter 0.5s;
+}
 
-                & h2 {
-                    transition-delay: 0.3s;
-                }
+section .list .item .car-img::before {
+    content: '';
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 100px;
+    top: 150%;
+    left: 50px;
+    border-radius: 50%;
+    filter: blur(50px);
+}
 
-                & .description {
-                    transition-delay: 0.7s;
-                }
+/* Conteúdo do item */
+section .list .item .content {
+    position: absolute;
+    right: 100px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+}
 
-                & .information {
-                    transition-delay: 0.9s;
-                }
-            }
-        }
+/* Tipografia e informações */
+section .list .item .content .car-information {
+    font-weight: bold;
+}
 
-        & .active {
-            transform: translateX(0);
-            transition: 0.5s;
-            opacity: 1;
+section .list .item .content h2 {
+    font-size: 8em;
+    line-height: 1em;
+    font-family: "League Gothic", sans-serif;
+    text-shadow: 0 0 5px #beff1b, 0 0 10px #beff1b, 0 0 20px #beff1b;
+    animation: glow 2s infinite alternate;
+}
 
-            & .car-img {
-                & img {
-                    transform: rotate(-20deg);
-                }
-            }
+@keyframes glow {
+    from { text-shadow: 0 0 5px #beff1b, 0 0 10px #beff1b, 0 0 20px #beff1b; }
+    to { text-shadow: 0 0 10px #beff1b, 0 0 20px #beff1b, 0 0 30px #fff; }
+}
 
-            & .content {
+section .list .item .content .description {
+    color: #d9d9d9;
+    font-size: 12px;
+    text-align: right;
+    max-width: 400px;
+}
 
-                & .car-information,
-                h2,
-                .description,
-                .information {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-        }
-    }
+section .list .item .content .information {
+    border-radius: 30px;
+    height: 35px;
+    width: 120px;
+    text-transform: uppercase;
+    border: 2px solid #791fd3;
+    background-color: #beff1b;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "League Gothic", sans-serif;
+    box-shadow: 0 0 10px #beff1b;
+    transition: all 0.3s ease;
+}
+
+section .list .item .content .information:hover {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 20px #beff1b, 0 0 30px #fff;
+}
+
+/* Linha do carrossel */
+section .list::before {
+    content: '';
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    top: 50%;
+    border-top: 1px solid #fff;
+}
+
+/* Setas do carrossel */
+section .arrows {
+    width: 70vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25px);
+    display: flex;
+    justify-content: space-between;
+}
+
+section .arrows button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+section .arrows button:hover {
+    background-color: #beff1b;
+}
+
+section .arrows button img {
+    width: 30px;
+    cursor: pointer;
+}
+
+section .arrows button:nth-child(1) img {
+    transform: scale(-1);
+}
+
+/* Indicadores */
+section .indicators {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 200px;
+    transform: translateX(-50%);
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 15px;
+}
+
+section .indicators .number {
+    font-size: 5em;
+    font-family: "League Gothic", sans-serif;
+}
+
+section .indicators ul {
+    display: flex;
+    gap: 10px;
+}
+
+section .indicators ul li {
+    width: 50px;
+    height: 5px;
+    background-color: #beff1b;
+    border-radius: 5px;
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+section .indicators ul li.active::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(90deg, #beff1b, #fff);
+    animation: fillBar 0.5s forwards;
+}
+
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+section .indicators ul li.active {
+    background-color: #fff;
+}
+
+/* ----------------------------- */
+/* Chatbot flutuante estilo neon  */
+/* ----------------------------- */
+
+.chatbot {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 300px;
+    font-family: 'Poppins', sans-serif;
+    z-index: 200;
+    font-size: 14px;
+}
+
+.chatbot-header {
+    background-color: #beff1b;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    box-shadow: 0 0 15px #beff1b, 0 0 25px #beff1b inset;
+    transition: 0.3s;
+}
+
+.chatbot-header:hover {
+    box-shadow: 0 0 25px #beff1b, 0 0 35px #beff1b inset;
+}
+
+.chatbot-body {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    max-height: 400px;
+    box-shadow: 0 0 15px #beff1b;
+    animation: fadeIn 0.5s ease forwards;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.chatbot-messages {
+    padding: 10px;
+    height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scroll-behavior: smooth;
+}
+
+.chatbot-messages .message {
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    line-height: 1.4em;
+}
+
+.chatbot-messages .user {
+    background-color: #beff1b;
+    color: #000;
+    align-self: flex-end;
+}
+
+.chatbot-messages .bot {
+    background-color: #242323;
+    color: #fff;
+    align-self: flex-start;
+    border: 1px solid #beff1b;
+}
+
+.chatbot-body input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: calc(100% - 80px);
+    background-color: #222;
+    color: #fff;
+}
+
+.chatbot-body button {
+    width: 60px;
+    background-color: #beff1b;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.chatbot-body button:hover {
+    background-color: #fff;
+    color: #000;
+    transition: 0.3s;
 }

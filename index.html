@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+
     <title>FP Sellection</title>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <img src="./img/logo.png" alt="logo fp">
         <nav>
@@ -30,87 +31,64 @@
         </nav>
     </header>
 
+    <!-- Carrossel -->
     <section class="container">
         <div class="list">
-
 
             <div class="item active">
                 <div class="car-img">
                     <img src="./img/1.png" alt="imagem carro">
                 </div>
                 <div class="content">
-                    <p class="car-information">
-                        Único Dono
-                    </p>
-                    <h2>
-                        911 Turbo
-                    </h2>
+                    <p class="car-information">Único Dono</p>
+                    <h2>911 Turbo</h2>
                     <p class="description">
-                        “Descubra o poder e a elegância do Porsche 911 Turbo — um ícone que redefine o conceito de
-                        velocidade e sofisticação.
-                        Com seu motor biturbo de alta performance, cada aceleração é uma explosão de adrenalina e
-                        controle absoluto.
+                        Descubra o poder e a elegância do Porsche 911 Turbo — um ícone que redefine velocidade e sofisticação.
+                        Com seu motor biturbo de alta performance, cada aceleração é uma explosão de adrenalina.
                     </p>
-                    <button class="information">
-                        Saiba Mais
-                    </button>
+                    <button class="information">Saiba Mais</button>
                 </div>
             </div>
-
 
             <div class="item">
                 <div class="car-img">
                     <img src="./img/2.png" alt="imagem carro">
                 </div>
                 <div class="content">
-                    <p class="car-information">
-                        Conversível
-                    </p>
-                    <h2>
-                        Ferrari
-                    </h2>
+                    <p class="car-information">Conversível</p>
+                    <h2>Ferrari</h2>
                     <p class="description">
-                        “Experimente a emoção de dirigir uma Ferrari — onde potência, luxo e performance se encontram.
-                        Cada detalhe foi pensado para oferecer uma experiência única, unindo design arrojado e
-                        engenharia de ponta.”
+                        Experimente a emoção de dirigir uma Ferrari — onde potência, luxo e performance se encontram.
+                        Cada detalhe oferece uma experiência única, unindo design arrojado e engenharia de ponta.
                     </p>
-                    <button class="information">
-                        Saiba Mais
-                    </button>
+                    <button class="information">Saiba Mais</button>
                 </div>
             </div>
-
 
             <div class="item">
                 <div class="car-img">
                     <img src="./img/3.png" alt="imagem carro">
                 </div>
                 <div class="content">
-                    <p class="car-information">
-                        2015
-                    </p>
-                    <h2>
-                        Lamborghini
-                    </h2>
+                    <p class="car-information">2015</p>
+                    <h2>Lamborghini</h2>
                     <p class="description">
-                        “Viva a intensidade de uma Lamborghini — o equilíbrio perfeito entre arte, potência e audácia.
-                        Cada curva da carroceria reflete ousadia, cada som do motor V10 ou V12 desperta pura emoção.
-                        Com design agressivo e tecnologia de corrida, ela transforma qualquer trajeto em uma experiência
-                        inesquecível.”
+                        Viva a intensidade de uma Lamborghini — o equilíbrio perfeito entre arte, potência e audácia.
+                        Cada curva e som do motor V10 ou V12 desperta pura emoção.
                     </p>
-                    <button class="information">
-                        Saiba Mais
-                    </button>
+                    <button class="information">Saiba Mais</button>
                 </div>
             </div>
+
         </div>
 
-
+        <!-- Setas -->
         <div class="arrows">
             <button id="prev"><img src="./img/arrow.png" alt="seta esquerda"></button>
             <button id="next"><img src="./img/arrow.png" alt="seta direita"></button>
         </div>
 
+        <!-- Indicadores -->
         <div class="indicators">
             <div class="number">01</div>
             <ul>
@@ -121,8 +99,18 @@
         </div>
     </section>
 
-    <script src="./scripts.js"></script>
+    <!-- Chatbot Flutuante -->
+    <div class="chatbot">
+        <div class="chatbot-header" onclick="toggleChat()">Chat</div>
+        <div class="chatbot-body">
+            <div class="chatbot-messages" id="chatMessages"></div>
+            <input type="text" id="chatInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
 
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
 </body>
 
 </html>
